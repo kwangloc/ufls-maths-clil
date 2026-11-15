@@ -1,0 +1,30 @@
+{
+  "name": "ufls-maths-clil",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "figures": "node scripts/build-figure-manifest.mjs",
+    "predev": "npm run figures",
+    "dev": "vite",
+    "prebuild": "npm run figures",
+    "build": "vite build",
+    "preview": "vite preview",
+    "start": "serve dist -l tcp://0.0.0.0:${PORT:-3000}"
+  },
+  "dependencies": {
+    "lucide-react": "^0.468.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "serve": "^14.2.8",
+    "typeface-glacial-indifference": "^1.1.14"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "typescript": "~5.7.2",
+    "vite": "^6.0.5"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
