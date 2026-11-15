@@ -17,34 +17,24 @@ import lesson05MultiplicationPdf from "./worksheet/Chapter_I_Worksheets/Chapter_
 import lesson06PowersPdf from "./worksheet/Chapter_I_Worksheets/Chapter_I/Lesson_06_Powers_with_Natural_Exponents.pdf?url";
 import lesson07OperationsPdf from "./worksheet/Chapter_I_Worksheets/Chapter_I/Lesson_07_Order_of_Operations.pdf?url";
 
-const CHAPTER_WORKSHEET_PDFS = {
-  ...import.meta.glob("./worksheet/Chapter_II_Worksheets/Chapter_II/*.pdf", {
+const CHAPTER_WORKSHEET_PDFS = import.meta.glob(
+  "./worksheet/Chapter_*_Worksheets/Chapter_*/*.pdf",
+  {
     eager: true,
     query: "?url",
     import: "default",
-  }),
-  ...import.meta.glob("./worksheet/Chapter_III_Worksheets/Chapter_III/*.pdf", {
-    eager: true,
-    query: "?url",
-    import: "default",
-  }),
-  ...import.meta.glob("./worksheet/Chapter_IV_Worksheets/Chapter_IV/*.pdf", {
-    eager: true,
-    query: "?url",
-    import: "default",
-  }),
-  ...import.meta.glob("./worksheet/Chapter_V_Worksheets/Chapter_V/*.pdf", {
-    eager: true,
-    query: "?url",
-    import: "default",
-  }),
-};
+  },
+);
 
 const WORKSHEET_CHAPTER_ROMANS = {
   "chapter-2": "II",
   "chapter-3": "III",
   "chapter-4": "IV",
   "chapter-5": "V",
+  "chapter-6": "VI",
+  "chapter-7": "VII",
+  "chapter-8": "VIII",
+  "chapter-9": "IX",
 };
 
 const CHAPTER_1_PRINTABLE_PDFS = {
