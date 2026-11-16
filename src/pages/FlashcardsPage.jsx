@@ -52,7 +52,6 @@ const volume2Flashcards = volume2Terms.map((term) => {
   return { ...term, chapterCode: chapter.chapterCode };
 });
 const flashcards = [...content.flashcards, ...volume2Flashcards];
-const volume1ChapterIds = ["chapter-1", "chapter-2", "chapter-3", "chapter-4", "chapter-5"];
 
 function shuffleArray(items) {
   const copy = [...items];
@@ -235,9 +234,7 @@ export default function FlashcardsPage() {
       icon: Layers3,
     },
     { id: STUDY_MODES.ACTIVE_RECALL, label: "Active recall", icon: Star },
-    ...(volume1ChapterIds.includes(selectedChapter)
-      ? [{ id: STUDY_MODES.FILL_THE_GAP, label: "Fill the gap", icon: ListChecks }]
-      : []),
+    { id: STUDY_MODES.FILL_THE_GAP, label: "Fill the gap", icon: ListChecks },
   ];
 
   const progressValue = filteredCards.length

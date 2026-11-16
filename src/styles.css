@@ -490,10 +490,10 @@ select:focus-visible {
 
 .info-panel {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 16px;
   min-height: 150px;
-  padding: 0 8px;
+  padding: 16px 8px 0;
 }
 
 .info-avatar {
@@ -506,7 +506,7 @@ select:focus-visible {
   color: #ffffff;
   flex-shrink: 0;
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.15);
-  align-self: center;
+  align-self: flex-start;
 }
 
 .info-avatar svg {
@@ -523,7 +523,7 @@ select:focus-visible {
   border: 1px solid rgba(31, 31, 31, 0.12);
   color: #2a1d72;
   flex-shrink: 0;
-  align-self: center;
+  align-self: flex-start;
 }
 
 .info-panel p {
@@ -535,7 +535,7 @@ select:focus-visible {
 }
 
 .info-panel-alt {
-  align-items: center;
+  align-items: flex-start;
 }
 
 .eyebrow,

@@ -71,6 +71,22 @@
       "4.13": { check: { type: "polygon", vertices: 4, sides: [4, 6], diagonal: 7, labels: ["A", "B", "C", "D"] } },
       "4.14": { check: { type: "polygon", vertices: 4, sides: [4], angle: 60, labels: ["M", "N", "P", "Q"] } },
     },
+    "lesson-20": {
+      "4.23": {
+        prompt: "A window vent has the dimensions shown in the figure below. Is a 7 m iron bar enough to make all its bars? Ignore joints.",
+        answer: "Outer frame: 2 × (96 + 72) = 336 cm. Middle bars: 96 + 72 = 168 cm. Four slanted bars: 4 × 60 = 240 cm. Total = 744 cm = 7.44 m, which is more than 7 m, so the bar is not enough.",
+        figure: { alt: "Rectangular vent 96 cm wide and 72 cm tall, with a horizontal and a vertical bar through the middle and four 60 cm bars joining the midpoints of its sides." },
+      },
+      "4.24": {
+        prompt: "Calculate the perimeter and area of the garden ABCDEF shown in the figure below.",
+        answer: "EF = 7 − 3 = 4 m and DE = 10 − 7 = 3 m. Perimeter = 7 + 10 + 3 + 3 + 4 + 7 = 34 m. Area = 10 × 7 − 3 × 4 = 58 m².",
+        figure: { alt: "L-shaped garden ABCDEF: AB = 7 m, BC = 10 m, CD = 3 m, AF = 7 m, with corner E cut in from the bottom right." },
+      },
+      "4.25": {
+        prompt: "A paving stone, shown below, is made from a small regular hexagon and six isosceles trapezoids. Each trapezoid has bases 20 cm and 40 cm and height 17.3 cm. The small hexagon has six equilateral triangles with side 20 cm and height 17.3 cm. Find the total area.",
+        figure: { alt: "Regular hexagonal paving stone: a small regular hexagon in the centre surrounded by six isosceles trapezoids." },
+      },
+    },
     "chapter-4-review": {
       "4.29": {
         height: 14,
@@ -96,13 +112,15 @@
         check: { type: "axes" },
       },
       "5.5": {
-        prompt: "Draw all the axes of symmetry of the shapes below: an equilateral triangle, a rhombus, and a regular hexagon.",
-        answer: "Equilateral triangle: 3 axes. Rhombus: 2 axes (its diagonals). Regular hexagon: 6 axes.",
+        prompt: "Draw all the axes of symmetry of the shapes below: an arrow, a cross, and three squares joined at their corners.",
+        answer: "Arrow: 1 axis (the vertical line through its tip). Cross: 4 axes (vertical, horizontal and the two diagonals). Three squares: 2 axes (the diagonal line through the centres of the squares, and the line perpendicular to it through the middle square's centre).",
+        height: 7,
+        // Same shapes as the picture, traced on its grid (cells) and scaled to 0.4 cm per cell.
         given: [
-          polygon([1, 10], [5, 10], [3, 10 - 2 * r3]),
-          polygon([8, 7], [10, 4], [12, 7], [10, 10]),
-          hexagon(16, 7, 2.5),
-        ],
+          [[8, 2], [14, 8], [11, 8], [11, 14], [5, 14], [5, 8], [2, 8]],
+          [[22, 2], [26, 2], [26, 6], [30, 6], [30, 10], [26, 10], [26, 14], [22, 14], [22, 10], [18, 10], [18, 6], [22, 6]],
+          [[36, 2], [40, 2], [40, 6], [44, 6], [44, 10], [48, 10], [48, 14], [44, 14], [44, 10], [40, 10], [40, 6], [36, 6]],
+        ].map((cells) => polygon(...cells.map(([x, y]) => [x * 0.4, y * 0.4 + 0.2]))),
         check: { type: "axes" },
       },
       "5.6": {

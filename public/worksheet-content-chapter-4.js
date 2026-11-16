@@ -3,7 +3,7 @@
     "lesson-18": {
       title: "Lesson 18: Equilateral Triangles, Squares and Regular Hexagons",
       questions: [
-        { number: "4.1", prompt: "Use Figure 4.4 in the original worksheet PDF. Identify which figure is an equilateral triangle, which is a square, and which is a regular hexagon.", answer: "Match the equilateral triangle to the figure with three equal sides, the square to the four equal sides and four right angles, and the regular hexagon to the six equal sides and angles." },
+        { number: "4.1", prompt: "Use Figure 4.4. Identify which figure is an equilateral triangle, which is a square, and which is a regular hexagon.", answer: "Match the equilateral triangle to the figure with three equal sides, the square to the four equal sides and four right angles, and the regular hexagon to the six equal sides and angles." },
         { number: "4.2", drawing: { background: "grid" }, prompt: "Draw equilateral triangle EFG with side EF = 6 cm.", answer: "Draw all three sides 6 cm; all three angles are 60°." },
         { number: "4.3", drawing: { background: "grid" }, prompt: "Draw square MNPQ with side MN = 4 cm and diagonals MP and NQ. Are the diagonals perpendicular?", answer: "Yes. The diagonals of a square meet at right angles." },
         { number: "4.4", prompt: "For regular hexagon ABCDEF in Figure 4.5: (a) name its short diagonals; (b) are triangles ACE and BDF equilateral?", answer: "(a) AC, CE, EA, BD, DF, and FB. (b) Yes; each triangle has three equal sides." },
@@ -15,7 +15,7 @@
     "lesson-19": {
       title: "Lesson 19: Rectangles, Rhombuses, Parallelograms and Isosceles Trapezoids",
       questions: [
-        { number: "4.8", prompt: "Use Figure 4.11 in the original worksheet PDF to identify the rectangle and the rhombus.", answer: "The rectangle has four right angles; the rhombus has four equal sides. Match these properties to the labeled figures in Figure 4.11." },
+        { number: "4.8", prompt: "Use Figure 4.11 to identify the rectangle and the rhombus.", answer: "The rectangle has four right angles; the rhombus has four equal sides. Match these properties to the labeled figures in Figure 4.11." },
         { number: "4.9", prompt: "Use Figure 4.12 to identify the parallelogram and the isosceles trapezoid.", answer: "A parallelogram has two pairs of parallel opposite sides. An isosceles trapezoid has one pair of parallel sides and equal legs." },
         { number: "4.10", drawing: { background: "grid" }, prompt: "Draw rectangle ABCD with AB = 6 cm and BC = 4 cm.", answer: "Draw opposite sides equal and parallel; the four angles are 90°." },
         { number: "4.11", drawing: { background: "grid" }, prompt: "Draw rhombus MNPQ with side MN = 3 cm.", answer: "All four sides must be 3 cm; the angles do not have to be right angles." },
