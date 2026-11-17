@@ -11,12 +11,12 @@ export const VOLUMES = [
       {
         id: "chapter-2",
         label: "Chapter II:",
-        title: "DIVISIBILITY RELATIONS AND PROPERTIES",
+        title: "DIVISIBILITY IN THE SET OF NATURAL NUMBER",
       },
       {
         id: "chapter-3",
         label: "Chapter III:",
-        title: "THE SET OF INTEGERS",
+        title: "INTEGER",
       },
       {
         id: "chapter-4",
