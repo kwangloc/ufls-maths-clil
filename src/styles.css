@@ -1,3 +1,4 @@
+@import "./header.css";
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap");
 @import "typeface-glacial-indifference";
 
@@ -61,45 +62,6 @@ select:focus-visible {
   background-position: center top;
   background-size: 100% auto;
   background-repeat: repeat-y;
-}
-
-.horizontal-header {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  padding: 4px 20px 4px 30px;
-  background: rgba(246, 247, 244, 0.96);
-  border: 1px solid rgba(154, 165, 157, 0.7);
-  box-shadow: inset 0 -1px 0 rgba(31, 42, 35, 0.04);
-  backdrop-filter: blur(12px);
-}
-
-.brand-block {
-  display: flex;
-  align-items: center;
-  flex-shrink: 0;
-  cursor: pointer;
-  color: inherit;
-  text-decoration: none;
-}
-
-.brand-identity {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-}
-
-.brand-mark {
-  position: relative;
-  display: block;
-  width: auto;
-  height: 90px;
-  max-width: 260px;
-  object-fit: contain;
 }
 
 .brand-copy {
@@ -177,100 +139,6 @@ select:focus-visible {
   color: #243d3c;
   font-family: "Manrope", sans-serif;
   letter-spacing: 0.2px;
-}
-
-.top-nav {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  flex: 1;
-  gap: 14px;
-  flex-wrap: wrap;
-  padding-left: 18px;
-}
-
-.nav-menu {
-  position: relative;
-  display: flex;
-  align-items: center;
-  flex: 0 0 auto;
-}
-
-.nav-link {
-  display: inline-flex;
-  align-items: center;
-  border: 0;
-  border-radius: 12px;
-  background: transparent;
-  color: #293c37;
-  text-align: left;
-  font-size: 17px;
-  font-weight: 600;
-  padding: 8px 10px;
-  transition:
-    color 0.18s ease,
-    background 0.18s ease;
-  position: relative;
-}
-
-.nav-link:hover {
-  background: #eef6ee;
-  color: var(--green);
-}
-
-.nav-link.active {
-  color: var(--green);
-}
-
-.grade-menu {
-  position: absolute;
-  top: calc(100% - 2px);
-  left: 50%;
-  z-index: 60;
-  display: none;
-  min-width: 154px;
-  padding: 10px;
-  transform: translateX(-50%);
-  grid-template-columns: 1fr;
-  gap: 8px;
-  border: 1px solid rgba(154, 165, 157, 0.45);
-  border-radius: 16px;
-  background: rgba(246, 247, 244, 0.98);
-  box-shadow: 0 12px 28px rgba(31, 42, 35, 0.14);
-  backdrop-filter: blur(12px);
-}
-
-.nav-menu.open .grade-menu {
-  display: grid;
-}
-
-.grade-option {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 40px;
-  padding: 7px 12px;
-  border: 0;
-  border-radius: 22px;
-  background: #a9c8c1;
-  color: #172f39;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background 0.18s ease, transform 0.18s ease;
-}
-
-.grade-option:hover {
-  transform: translateY(-1px);
-  background: #94b9b1;
-}
-
-.grade-option-status {
-  display: none;
-  margin-left: 8px;
-  color: #536e67;
-  font-size: 9px;
-  font-weight: 600;
 }
 
 .main-content {
@@ -2519,10 +2387,6 @@ select:focus-visible {
   color: var(--ink);
 }
 
-.back-button {
-  white-space: nowrap;
-}
-
 .chapter-choice {
   display: flex;
   flex-direction: column;
@@ -2734,10 +2598,6 @@ select:focus-visible {
   box-shadow: 0 8px 24px rgba(37, 52, 45, 0.07);
 }
 
-.teaching-tip-back {
-  margin-bottom: 20px;
-}
-
 .teaching-tip-detail-image {
   display: block;
   width: 100%;
@@ -2825,13 +2685,6 @@ select:focus-visible {
   .brand-slogan {
     font-size: 15px;
   }
-  .top-nav {
-    gap: 10px;
-  }
-  .nav-link {
-    padding: 7px 8px;
-    font-size: 16px;
-  }
   .hero {
     grid-template-columns: 1fr;
   }
@@ -2893,38 +2746,6 @@ select:focus-visible {
   .volume-chapter-column {
     width: 100%;
   }
-  .horizontal-header {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 12px 20px 10px;
-  }
-  .brand-block {
-    width: 100%;
-  }
-  .brand-mark {
-    transform: scale(0.9);
-    transform-origin: left center;
-  }
-  .top-nav {
-    width: 100%;
-    justify-content: flex-start;
-    padding-left: 0;
-  }
-  .nav-link {
-    font-size: 14px;
-  }
-  .grade-menu {
-    top: 100%;
-    left: 0;
-    min-width: 190px;
-    transform: none;
-  }
-  .grade-option {
-    justify-content: space-between;
-  }
-  .grade-option-status {
-    display: inline;
-  }
   .home-page,
   .page-section,
   .breadcrumb {
@@ -2936,6 +2757,33 @@ select:focus-visible {
   .results-line {
     flex-direction: column;
     align-items: flex-start;
+  }
+  /* Search and lesson picker take the full width instead of shrinking to
+     their content (search) or running off the screen (long lesson names). */
+  .toolbar {
+    align-items: stretch;
+  }
+  .select-wrap {
+    min-width: 0;
+  }
+  .select-wrap select {
+    flex: 1;
+    min-width: 0;
+    width: 100%;
+    text-overflow: ellipsis;
+  }
+  /* Four study modes in a 2x2 grid instead of one row that runs off screen. */
+  .study-mode-switch {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
+    width: 100%;
+    padding: 6px;
+  }
+  .mode-toggle-button {
+    min-width: 0;
+    padding: 10px 8px;
+    font-size: 14px;
   }
   .grade-coming-soon {
     margin-top: 24px;

@@ -3,6 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" />
     <meta name="description" content="Mark worksheet files submitted by pupils." />
     <title>Mark submitted work · Maths CLIL</title>
     <link rel="stylesheet" href="/drawing-pad.css" />
@@ -73,6 +76,7 @@
     </style>
   </head>
   <body>
+    <div id="site-header" data-active-page="worksheets"></div>
     <main class="page">
       <nav class="breadcrumb" aria-label="Breadcrumb">
         <ol>
@@ -499,5 +503,6 @@
         setTimeout(() => URL.revokeObjectURL(url), 1000);
       });
     </script>
+    <script type="module" src="/src/site-header.jsx"></script>
   </body>
 </html>

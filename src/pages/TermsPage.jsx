@@ -1,12 +1,12 @@
 import React, { useMemo } from "react";
-import { ArrowLeft, ArrowRight, Calculator } from "lucide-react";
+import { ArrowRight, Calculator } from "lucide-react";
 import VolumeChapterPage from "../components/VolumeChapterPage";
 import {
   CHAPTER_LESSON_RANGES,
   getChapterById,
 } from "../constants/chapterMeta";
 
-export function TermsChapterPage({ chapterId, lessons, onBack, onOpenLesson }) {
+export function TermsChapterPage({ chapterId, lessons, onOpenLesson }) {
   const chapter = getChapterById(chapterId);
   const lessonRange = CHAPTER_LESSON_RANGES[chapterId];
   const lessonList = useMemo(
@@ -35,13 +35,6 @@ export function TermsChapterPage({ chapterId, lessons, onBack, onOpenLesson }) {
       </div>
 
       <div className="chapter-detail-header">
-        <button
-          type="button"
-          className="secondary-button back-button"
-          onClick={onBack}
-        >
-          <ArrowLeft size={16} /> Back to chapters
-        </button>
         <div className="chapter-detail-title">
           <span>{chapter.label}</span>
           <h2>{chapter.title}</h2>

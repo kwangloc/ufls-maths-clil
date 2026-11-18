@@ -1,17 +1,6 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
-
-// True for an ordinary left click. Ctrl/Cmd/Shift/middle clicks are left to the
-// browser so links still open in a new tab or window.
-export function isPlainLeftClick(event) {
-  return (
-    event.button === 0 &&
-    !event.metaKey &&
-    !event.ctrlKey &&
-    !event.shiftKey &&
-    !event.altKey
-  );
-}
+import { isPlainLeftClick } from "../routing";
 
 /**
  * items: [{ label, href?, onSelect? }]. The last item is the current page and

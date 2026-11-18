@@ -15,49 +15,24 @@ import WorksheetsPage, { WorksheetsChapterPage } from "./pages/WorksheetsPage";
 import TipsPage, { TeachingTipDetailPage } from "./pages/TipsPage";
 import AboutPage from "./pages/AboutPage";
 import FeedbackForm from "./components/FeedbackForm";
-import Breadcrumb, { isPlainLeftClick } from "./components/Breadcrumb";
-
-const PAGES = {
-  HOME: "home",
-  TERMS: "terms",
-  TERMS_CHAPTER: "terms-chapter",
-  TERMS_LESSON: "terms-lesson",
-  FLASHCARDS: "flashcards",
-  WORKSHEETS: "worksheets",
-  WORKSHEETS_CHAPTER: "worksheets-chapter",
-  TIPS: "tips",
-  TIPS_DETAIL: "tips-detail",
-  ABOUT: "about",
-};
-
-const navItems = [
-  { id: PAGES.HOME, label: "Home" },
-  { id: PAGES.TERMS, label: "Maths term" },
-  { id: PAGES.FLASHCARDS, label: "Flashcard" },
-  { id: PAGES.WORKSHEETS, label: "Worksheet" },
-  { id: PAGES.TIPS, label: "Teaching tips" },
-  { id: PAGES.ABOUT, label: "About us" },
-];
+import Breadcrumb from "./components/Breadcrumb";
+import SiteHeader from "./components/SiteHeader";
+import {
+  CHAPTER_PAGES,
+  GRADES,
+  PAGES,
+  RESOURCE_PAGES,
+  buildUrl,
+} from "./routing";
 
 const DEFAULT_CHAPTER = "chapter-1";
-const GRADES = [6, 7, 8, 9];
-const RESOURCE_PAGES = {
-  [PAGES.TERMS]: "Maths terms",
-  [PAGES.FLASHCARDS]: "Flashcards",
-  [PAGES.WORKSHEETS]: "Worksheets",
-};
 const terms = [...content.terms, ...volume2Terms];
 
 function getDefaultLesson() {
   return terms[0]?.lesson || "all";
 }
 
-// "Lesson 18: Equilateral triangle..." <-> "lesson-18"; "all" stays "all".
-function lessonToSlug(lesson) {
-  const number = /^Lesson (\d+)/.exec(lesson)?.[1];
-  return number ? `lesson-${number}` : lesson;
-}
-
+// "lesson-18" -> "Lesson 18: Equilateral triangle..."; "all" stays "all".
 function lessonFromSlug(slug) {
   if (slug === "all") return "all";
   const number = /^lesson-(\d+)$/.exec(slug ?? "")?.[1];
@@ -82,17 +57,10 @@ function readRoute(search) {
     grade: GRADES.includes(grade) ? grade : 6,
   };
 
-  if (
-    route.page === PAGES.TERMS_CHAPTER ||
-    route.page === PAGES.WORKSHEETS_CHAPTER
-  ) {
+  if (CHAPTER_PAGES[route.page]) {
     const chapter = params.get("chapter");
-    if (CHAPTERS.some((item) => item.id === chapter)) {
-      route.chapter = chapter;
-    } else {
-      route.page =
-        route.page === PAGES.TERMS_CHAPTER ? PAGES.TERMS : PAGES.WORKSHEETS;
-    }
+    if (CHAPTERS.some((item) => item.id === chapter)) route.chapter = chapter;
+    else route.page = CHAPTER_PAGES[route.page];
   }
 
   if (route.page === PAGES.TERMS_LESSON) {
@@ -108,18 +76,6 @@ function readRoute(search) {
   }
 
   return route;
-}
-
-function buildUrl({ page, chapter, lesson, tip, grade }) {
-  if (page === PAGES.HOME) return "/";
-  const params = new URLSearchParams({ page });
-  if (RESOURCE_PAGES[page] && grade !== 6) params.set("grade", grade);
-  if (page === PAGES.TERMS_CHAPTER || page === PAGES.WORKSHEETS_CHAPTER) {
-    params.set("chapter", chapter);
-  }
-  if (page === PAGES.TERMS_LESSON) params.set("lesson", lessonToSlug(lesson));
-  if (page === PAGES.TIPS_DETAIL && tip) params.set("tip", tip);
-  return `/?${params.toString()}`;
 }
 
 function withRouteDefaults(route) {
@@ -138,6 +94,7 @@ function getBreadcrumbRoutes({ page, chapter, lesson, tip, grade }) {
   const home = { label: "Home", route: { page: PAGES.HOME } };
   const section = (sectionPage, label) => ({ label, route: { page: sectionPage } });
   const terms = section(PAGES.TERMS, "Maths terms");
+  const flashcards = section(PAGES.FLASHCARDS, "Flashcards");
   const worksheets = section(PAGES.WORKSHEETS, "Worksheets");
   const tips = section(PAGES.TIPS, "Teaching tips");
   const current = (label) => ({ label });
@@ -171,6 +128,8 @@ function getBreadcrumbRoutes({ page, chapter, lesson, tip, grade }) {
         current(lesson),
       ];
     }
+    case PAGES.FLASHCARDS_CHAPTER:
+      return [home, flashcards, current(getChapterShortLabel(chapter))];
     case PAGES.WORKSHEETS_CHAPTER:
       return [home, worksheets, current(getChapterShortLabel(chapter))];
     case PAGES.TIPS:
@@ -198,7 +157,6 @@ function App() {
     initialRoute.tip,
   );
   const [selectedGrade, setSelectedGrade] = useState(initialRoute.grade);
-  const [openGradeMenu, setOpenGradeMenu] = useState(null);
 
   const url = buildUrl({
     page,
@@ -230,7 +188,6 @@ function App() {
     setSelectedTeachingTip(next.tip);
     setSelectedGrade(next.grade);
     setSearch("");
-    setOpenGradeMenu(null);
   }
 
   useEffect(() => {
@@ -271,7 +228,6 @@ function App() {
   function navigate(nextPage) {
     setPage(nextPage);
     resetSearch();
-    setOpenGradeMenu(null);
 
     if (nextPage === PAGES.TIPS) {
       setSelectedTeachingTip(null);
@@ -294,7 +250,6 @@ function App() {
     setSelectedGrade(grade);
     setPage(nextPage);
     resetSearch();
-    setOpenGradeMenu(null);
 
     if (nextPage === PAGES.TERMS) {
       setSelectedLesson(getDefaultLesson());
@@ -317,153 +272,30 @@ function App() {
     resetSearch();
   }
 
+  function openFlashcardsChapter(chapterId) {
+    setSelectedChapter(chapterId);
+    setPage(PAGES.FLASHCARDS_CHAPTER);
+    resetSearch();
+  }
+
   function openWorksheetChapter(chapterId) {
     setSelectedChapter(chapterId);
     setPage(PAGES.WORKSHEETS_CHAPTER);
     resetSearch();
   }
 
-  function backToLessons() {
-    setPage(PAGES.TERMS);
-    resetSearch();
-    setSelectedLesson(getDefaultLesson());
-  }
-
-  function backToTermsChapterList() {
-    setPage(PAGES.TERMS);
-    resetSearch();
-  }
-
-  function backToWorksheetChapterList() {
-    setPage(PAGES.WORKSHEETS);
-    resetSearch();
-  }
-
   function openTeachingTip(tipId) {
     setSelectedTeachingTip(tipId);
     setPage(PAGES.TIPS_DETAIL);
-    setOpenGradeMenu(null);
-  }
-
-  function backToTeachingTips() {
-    setSelectedTeachingTip(null);
-    setPage(PAGES.TIPS);
   }
 
   return (
     <div className="app-shell">
-      <header className="horizontal-header">
-        <a
-          className="brand-block"
-          href="/"
-          aria-label="Maths CLIL home"
-          onClick={(event) => {
-            // Ctrl/Cmd/middle click still opens the home page in a new tab.
-            if (!isPlainLeftClick(event)) return;
-            event.preventDefault();
-            navigate(PAGES.HOME);
-          }}
-        >
-          <div className="brand-identity">
-            <img
-              className="brand-mark"
-              src="/Main-logo.svg"
-              alt="Maths CLIL logo"
-            />
-          </div>
-        </a>
-
-        <nav className="top-nav" aria-label="Main navigation">
-          {navItems.map((item) => {
-            const hasGradeMenu = Boolean(RESOURCE_PAGES[item.id]);
-            return (
-              <div
-                key={item.id}
-                className={`nav-menu ${openGradeMenu === item.id ? "open" : ""}`}
-                onMouseEnter={() => {
-                  if (
-                    hasGradeMenu &&
-                    window.matchMedia("(hover: hover)").matches
-                  ) {
-                    setOpenGradeMenu(item.id);
-                  }
-                }}
-                onMouseLeave={() => {
-                  if (
-                    hasGradeMenu &&
-                    window.matchMedia("(hover: hover)").matches
-                  ) {
-                    setOpenGradeMenu((current) =>
-                      current === item.id ? null : current,
-                    );
-                  }
-                }}
-                onFocus={() => {
-                  if (hasGradeMenu) {
-                    setOpenGradeMenu(item.id);
-                  }
-                }}
-                onBlur={(event) => {
-                  if (
-                    hasGradeMenu &&
-                    !event.currentTarget.contains(event.relatedTarget)
-                  ) {
-                    setOpenGradeMenu((current) =>
-                      current === item.id ? null : current,
-                    );
-                  }
-                }}
-              >
-                <button
-                  type="button"
-                  className={`nav-link ${
-                    page === item.id ||
-                    (page === PAGES.TIPS_DETAIL && item.id === PAGES.TIPS)
-                      ? "active"
-                      : ""
-                  }`}
-                  aria-haspopup={hasGradeMenu ? "true" : undefined}
-                  aria-expanded={hasGradeMenu ? openGradeMenu === item.id : undefined}
-                  onClick={(event) => {
-                    if (hasGradeMenu) {
-                      if (event.detail > 0) {
-                        setOpenGradeMenu(item.id);
-                      } else {
-                        setOpenGradeMenu((current) =>
-                          current === item.id ? null : item.id,
-                        );
-                      }
-                    } else {
-                      navigate(item.id);
-                    }
-                  }}
-                >
-                  <span>{item.label}</span>
-                </button>
-                {hasGradeMenu && (
-                  <div className="grade-menu" aria-label={`${item.label} grades`}>
-                    {GRADES.map((grade) => (
-                      <button
-                        key={grade}
-                        type="button"
-                        className="grade-option"
-                        onClick={() => selectGrade(item.id, grade)}
-                      >
-                        <span>Grade {grade}</span>
-                        {grade !== 6 && (
-                          <span className="grade-option-status">
-                            Coming soon
-                          </span>
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                )}
-              </div>
-            );
-          })}
-        </nav>
-      </header>
+      <SiteHeader
+        activePage={page}
+        onNavigate={navigate}
+        onSelectGrade={selectGrade}
+      />
 
       <main className="main-content">
         <Breadcrumb items={breadcrumbItems} />
@@ -482,7 +314,6 @@ function App() {
           <TermsChapterPage
             chapterId={selectedChapter}
             lessons={lessons}
-            onBack={backToTermsChapterList}
             onOpenLesson={openLesson}
           />
         )}
@@ -493,7 +324,6 @@ function App() {
             lessons={lessons}
             search={search}
             setSearch={setSearch}
-            onBack={backToLessons}
             onLessonChange={(nextLesson) => {
               setSelectedLesson(nextLesson);
               setSearch("");
@@ -507,7 +337,12 @@ function App() {
             onExploreGradeSix={() => selectGrade(PAGES.FLASHCARDS, 6)}
           />
         )}
-        {page === "flashcards" && selectedGrade === 6 && <FlashcardsPage />}
+        {page === "flashcards" && selectedGrade === 6 && (
+          <FlashcardsPage onSelectChapter={openFlashcardsChapter} />
+        )}
+        {page === PAGES.FLASHCARDS_CHAPTER && (
+          <FlashcardsPage key={selectedChapter} chapterId={selectedChapter} />
+        )}
         {page === "worksheets" && selectedGrade !== 6 && (
           <GradeComingSoon
             grade={selectedGrade}
@@ -519,17 +354,11 @@ function App() {
           <WorksheetsPage onOpenChapter={openWorksheetChapter} />
         )}
         {page === "worksheets-chapter" && (
-          <WorksheetsChapterPage
-            chapterId={selectedChapter}
-            onBack={backToWorksheetChapterList}
-          />
+          <WorksheetsChapterPage chapterId={selectedChapter} />
         )}
         {page === PAGES.TIPS && <TipsPage onOpenTip={openTeachingTip} />}
         {page === PAGES.TIPS_DETAIL && (
-          <TeachingTipDetailPage
-            tipId={selectedTeachingTip}
-            onBack={backToTeachingTips}
-          />
+          <TeachingTipDetailPage tipId={selectedTeachingTip} />
         )}
         {page === "about" && <AboutPage />}
 

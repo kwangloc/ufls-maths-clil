@@ -58,7 +58,7 @@ By default, the script reads `Materials for MathsCLILweb.xlsx` in the project ro
 python3 scripts/import_excel.py "/path/to/your-updated-workbook.xlsx"
 ```
 
-This first version imports data at build time into `src/data/content.json`; it does not connect to a live database or require database credentials. Interactive worksheet exercises are included in `public/worksheet-content.js` and served by `public/worksheet.html`. The worksheet print button opens the corresponding original PDF from Google Drive so its printed layout matches the source; printing the PDF requires an internet connection.
+This first version imports data at build time into `src/data/content.json`; it does not connect to a live database or require database credentials. Interactive worksheet exercises are included in `public/worksheet-content.js` and served by `worksheet.html` (a Vite page that shares the site header with the app). The worksheet print button opens the corresponding original PDF from Google Drive so its printed layout matches the source; printing the PDF requires an internet connection.
 
 ## Drawing answers, automatic checks and marking
 

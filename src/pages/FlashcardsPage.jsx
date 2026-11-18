@@ -63,8 +63,10 @@ function shuffleArray(items) {
   return copy;
 }
 
-export default function FlashcardsPage() {
-  const [selectedChapter, setSelectedChapter] = useState(null);
+// chapterId comes from the URL. The app gives this component a new key when the
+// chapter changes, so card position, search and study mode start fresh.
+export default function FlashcardsPage({ chapterId = null, onSelectChapter }) {
+  const selectedChapter = chapterId;
   const [search, setSearch] = useState("");
   const [cardIndex, setCardIndex] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -192,15 +194,6 @@ export default function FlashcardsPage() {
       utterance.lang = "en-US";
       window.speechSynthesis.speak(utterance);
     }
-  }
-
-  function handleSelectChapter(chapterId) {
-    setSelectedChapter(chapterId);
-    setCardIndex(0);
-    setFlipped(false);
-    setSearch("");
-    setShowReviewList(false);
-    setStudyMode(STUDY_MODES.FLASHCARD);
   }
 
   function toggleFlipDirection() {
@@ -620,7 +613,7 @@ export default function FlashcardsPage() {
           title="Flip it. <em>Learn it.</em>"
           description="Practise key maths vocabulary with your flashcard deck."
           volumeId="volume-1"
-          onOpenChapter={handleSelectChapter}
+          onOpenChapter={onSelectChapter}
         />
       ) : Object.prototype.hasOwnProperty.call(
           CHAPTER_CODE_BY_ID,
@@ -630,13 +623,6 @@ export default function FlashcardsPage() {
           className={`page-section flashcards-page-shell ${studyMode === STUDY_MODES.FLASHCARD ? "flashcard-mode" : ""}`}
         >
           <div className="chapter-detail-header">
-            <button
-              type="button"
-              className="secondary-button back-button"
-              onClick={() => setSelectedChapter(null)}
-            >
-              <ArrowLeft size={16} /> Back to chapters
-            </button>
             <div className="chapter-detail-title">
               <span>{selectedChapterMeta.label}</span>
               <h2>{selectedChapterMeta.title}</h2>

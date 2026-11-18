@@ -5,8 +5,8 @@ Integrated Learning), following the Vietnamese *Kết nối tri thức với cu�
 curriculum, Volume 1. It offers an English/Vietnamese glossary, flashcards, and
 links to worksheets and teaching tips.
 
-React 18 + Vite 6, plain JSX and CSS. There is no backend, database, router,
-test suite or linter. All content is compiled in from one JSON file.
+React 18 + Vite 6, plain JSX and CSS. There is no backend, database, router
+library, test suite or linter. All content is compiled in from one JSON file.
 
 ```bash
 npm install
@@ -24,17 +24,29 @@ Materials for MathsCLILweb.xlsx   source of truth for all content
 scripts/import_excel.py           workbook -> src/data/content.json
 src/data/content.json             generated; imported directly by pages
 src/constants/chapterMeta.js      volumes and chapters (hand-written, not from the workbook)
-src/App.jsx                       page state, navigation, header
+src/App.jsx                       page state, URL sync, breadcrumbs
+src/routing.js                    page ids, menu items, buildUrl (no data imports)
 src/pages/                        one file per page
-src/components/                   VolumeChapterPage, FeedbackForm, EmptyState
-src/styles.css                    all styling, one global file
-public/                           logos, referenced by absolute path
+src/components/                   SiteHeader, Breadcrumb, VolumeChapterPage, ...
+src/styles.css                    app styling; imports header.css
+src/header.css                    header styling, shared with the standalone pages
+src/site-header.jsx               mounts SiteHeader on worksheet.html and grade.html
+worksheet.html, grade.html        standalone pages (Vite inputs, see vite.config.js)
+public/                           logos, worksheet scripts, referenced by absolute path
 ```
 
-**Navigation is a `useState` in `App.jsx`, not URLs.** Refreshing always returns
-to Home, and pages cannot be linked to or reached with the browser's back button.
-Terms and Worksheets keep their chapter and lesson state in `App`. Flashcards keeps
-its own state inside `FlashcardsPage`.
+**Pages are React state in `App.jsx`, kept in step with the URL.** `readRoute`
+turns `?page=...&chapter=...&lesson=lesson-18&tip=...&grade=7` into state on load
+and on Back/Forward, and an effect writes the URL back with `buildUrl`: a new page
+pushes a history entry, a filter change on the same page replaces it. Invalid
+values fall back to the nearest valid page. Chapter, lesson, tip and grade all live
+in `App`; `FlashcardsPage` gets its chapter as a prop and is keyed by it.
+
+**There are no "Back" buttons; breadcrumbs replace them.** `getBreadcrumbRoutes`
+in `App.jsx` builds the trail. `worksheet.html` and `grade.html` have their own
+static breadcrumb markup. The header is the same `SiteHeader` component everywhere:
+inside the app it switches pages in place, on the standalone pages its items are
+ordinary links.
 
 ---
 
@@ -82,12 +94,13 @@ make it appear, and if imported as-is its data would show up under Chapter I. Vo
 sent or stored, and the fields do not clear. Do not describe this as a working
 feature.
 
-**There is no `vite.config`.** `@vitejs/plugin-react` is installed but never loaded,
-and `typescript` is installed but unused. JSX is compiled by Vite's built-in esbuild
-step, so every JSX file needs `import React from "react"`. Keep that import until a
-config adds the plugin. With no `base` set and logos at `/Main-logo.svg`, deploying
-under a subpath such as GitHub Pages also needs `base` configured and those paths
-changed.
+**`vite.config.js` only lists the three HTML entry points.** `@vitejs/plugin-react`
+is installed but not loaded, and `typescript` is installed but unused. JSX is
+compiled by Vite's built-in esbuild step, so every JSX file needs
+`import React from "react"`. Keep that import until the config adds the plugin. With
+no `base` set and logos at `/Main-logo.svg`, deploying under a subpath such as
+GitHub Pages also needs `base` configured and those paths changed. A new standalone
+HTML page must be added to `build.rollupOptions.input`, or it is left out of `dist/`.
 
 **`VolumeChapterPage` renders `title` with `dangerouslySetInnerHTML`** so headings
 can contain `<em>`. Only pass hardcoded strings, never workbook or user data.
@@ -118,11 +131,6 @@ All in `FlashcardsPage.jsx` unless noted:
 - **Auto-advance timers are never cancelled.** After a correct answer, the 450 ms
   (active recall) or 550 ms (multiple choice) timer still fires, so clicking Next or
   answering again within that window skips an extra card.
-- **Clicking the Flashcard nav item inside a chapter does nothing,** because the
-  chapter is held in `FlashcardsPage` and the page stays mounted.
-- **`App.jsx`: no nav item is highlighted on sub-pages,** since the check is
-  `page === item.id` and `terms-chapter` and similar never match. "Back to lessons"
-  on a lesson page actually goes to the chapter list.
 
 ---
 

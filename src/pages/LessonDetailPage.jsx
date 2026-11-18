@@ -4,7 +4,6 @@ import {
   Search,
   ChevronDown,
   Volume2,
-  ArrowLeft,
 } from "lucide-react";
 import EmptyState from "../components/EmptyState";
 
@@ -42,7 +41,6 @@ export default function LessonDetailPage({
   lessons,
   search,
   setSearch,
-  onBack,
   onLessonChange,
 }) {
   const filteredTerms = useMemo(() => {
@@ -76,9 +74,6 @@ export default function LessonDetailPage({
           <h1>{lesson === "all" ? "Maths terms" : lesson}</h1>
           <p>Build your mathematical vocabulary in English and Vietnamese.</p>
         </div>
-        <button className="secondary-button" onClick={onBack}>
-          <ArrowLeft size={16} /> Back to lessons
-        </button>
       </div>
 
       <div className="toolbar">

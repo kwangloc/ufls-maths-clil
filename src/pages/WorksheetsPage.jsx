@@ -1,6 +1,5 @@
 import React, { useMemo } from "react";
 import {
-  ArrowLeft,
   BookOpen,
   ClipboardList,
   ArrowRight,
@@ -111,7 +110,7 @@ function getChapterWorksheetResources(chapter) {
     });
 }
 
-export function WorksheetsChapterPage({ chapterId, onBack }) {
+export function WorksheetsChapterPage({ chapterId }) {
   const chapter = getChapterById(chapterId);
   const resources = useMemo(
     () =>
@@ -141,13 +140,6 @@ export function WorksheetsChapterPage({ chapterId, onBack }) {
       </div>
 
       <div className="chapter-detail-header">
-        <button
-          type="button"
-          className="secondary-button back-button"
-          onClick={onBack}
-        >
-          <ArrowLeft size={16} /> Back to chapters
-        </button>
         <div className="chapter-detail-title">
           <span>{chapter.label}</span>
           <h2>{chapter.title}</h2>

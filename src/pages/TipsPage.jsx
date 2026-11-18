@@ -1,5 +1,5 @@
 import React from "react";
-import { ArrowLeft, Lightbulb } from "lucide-react";
+import { Lightbulb } from "lucide-react";
 import teachingTips from "../data/teachingTips";
 
 export default function TipsPage({ onOpenTip }) {
@@ -37,7 +37,7 @@ export default function TipsPage({ onOpenTip }) {
   );
 }
 
-export function TeachingTipDetailPage({ tipId, onBack }) {
+export function TeachingTipDetailPage({ tipId }) {
   const tip = teachingTips.find((item) => item.id === tipId);
 
   if (!tip) {
@@ -46,14 +46,6 @@ export function TeachingTipDetailPage({ tipId, onBack }) {
 
   return (
     <section className="page-section">
-      <button
-        type="button"
-        className="secondary-button back-button teaching-tip-back"
-        onClick={onBack}
-      >
-        <ArrowLeft size={16} /> Quay lại Teaching Tips
-      </button>
-
       <article
         className="teaching-tip-details"
         aria-labelledby={`teaching-tip-title-${tip.id}`}
