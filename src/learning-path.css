@@ -1,0 +1,229 @@
+/* Learning path (1 learn -> 2 practise -> 3 apply) and "What's next".
+   Shared by the app (styles.css imports this file) and worksheet.html (via
+   src/worksheet-path.jsx). Both pages define --green, --ink, --muted, --line. */
+
+.path-container {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 16px 34px 0;
+}
+
+.path-steps ol {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin: 0;
+  padding: 6px;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.path-steps li {
+  position: relative;
+  min-width: 0;
+}
+
+/* Arrow between steps. */
+.path-steps li + li::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -7px;
+  width: 6px;
+  height: 6px;
+  border-top: 2px solid var(--muted);
+  border-right: 2px solid var(--muted);
+  transform: translateY(-50%) rotate(45deg);
+  opacity: 0.6;
+}
+
+.path-step {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  padding: 10px 12px;
+  border-radius: 13px;
+  color: var(--ink);
+  text-decoration: none;
+  transition: background 0.18s ease;
+}
+
+a.path-step:hover {
+  background: #eef6ee;
+}
+
+a.path-step:focus-visible,
+.next-action:focus-visible,
+.path-pager-link:focus-visible {
+  outline: 3px solid #8cc9a4;
+  outline-offset: 2px;
+}
+
+.path-steps .is-current .path-step {
+  background: var(--green);
+  color: #fff;
+}
+
+.path-step.is-disabled {
+  color: var(--muted);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.path-step-number {
+  display: grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.path-step-text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.path-step-text strong {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
+  line-height: 1.25;
+}
+
+.path-step-text small {
+  overflow: hidden;
+  font-size: 13px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  opacity: 0.8;
+}
+
+.next-steps {
+  margin-top: 32px;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.next-steps h2 {
+  margin: 0 0 14px;
+  color: var(--ink);
+  font-size: 18px;
+}
+
+.next-steps-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.next-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 16px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fffefa;
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.next-action:hover {
+  border-color: var(--green);
+}
+
+.next-action.is-primary {
+  border-color: var(--green);
+  background: var(--green);
+  color: #fff;
+}
+
+.next-action.is-primary:hover {
+  background: #24563f;
+}
+
+.path-pager {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+}
+
+.path-pager-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  max-width: 48%;
+  color: var(--green);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.path-pager-link:hover span {
+  text-decoration: underline;
+}
+
+.path-pager-link.is-next {
+  text-align: right;
+}
+
+.path-pager-link span {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.path-pager-link small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+@media (max-width: 760px) {
+  .path-container {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+  .path-step {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding: 8px;
+  }
+  .path-step-text strong {
+    font-size: 13px;
+  }
+  .path-step-text strong svg {
+    display: none;
+  }
+  .path-step-text small {
+    font-size: 12px;
+  }
+  .path-step-number {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+  .next-steps {
+    padding: 18px;
+  }
+  .next-action {
+    width: 100%;
+    justify-content: space-between;
+  }
+}

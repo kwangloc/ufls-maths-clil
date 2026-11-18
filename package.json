@@ -5,12 +5,13 @@
   "type": "module",
   "scripts": {
     "figures": "node scripts/build-figure-manifest.mjs",
-    "predev": "npm run figures",
+    "predev": "npm run figures && npm run worksheet-titles",
     "dev": "vite",
-    "prebuild": "npm run figures",
+    "prebuild": "npm run figures && npm run worksheet-titles",
     "build": "vite build",
     "preview": "vite preview",
-    "start": "serve dist -l tcp://0.0.0.0:${PORT:-3000}"
+    "start": "serve dist -l tcp://0.0.0.0:${PORT:-3000}",
+    "worksheet-titles": "node scripts/build-worksheet-titles.mjs"
   },
   "dependencies": {
     "lucide-react": "^0.468.0",

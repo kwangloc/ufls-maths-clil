@@ -17,6 +17,13 @@ import AboutPage from "./pages/AboutPage";
 import FeedbackForm from "./components/FeedbackForm";
 import Breadcrumb from "./components/Breadcrumb";
 import SiteHeader from "./components/SiteHeader";
+import { NextSteps, PathSteps } from "./components/LearningPath";
+import {
+  STEPS,
+  getNextStepsForChapter,
+  getNextStepsForLesson,
+  getPathSteps,
+} from "./learningPath";
 import {
   CHAPTER_PAGES,
   GRADES,
@@ -166,17 +173,23 @@ function App() {
     grade: selectedGrade,
   });
   const lastPageInHistory = useRef(null);
+  // Set by goTo so that, for example, the "next lesson" link adds a history
+  // entry even though it stays on the same kind of page.
+  const pushNextUrl = useRef(false);
 
   // Keep the address bar in step with the page. Moving to another page adds a
-  // history entry so Back works; changing a filter on the same page (such as
-  // the lesson dropdown) only replaces the current entry.
+  // history entry so Back works, and scrolls to the top; changing a filter on
+  // the same page (such as the lesson dropdown) only replaces the entry.
   useEffect(() => {
     const current = window.location.pathname + window.location.search;
     if (url !== current) {
       const isNewPage =
-        lastPageInHistory.current !== null && lastPageInHistory.current !== page;
+        pushNextUrl.current ||
+        (lastPageInHistory.current !== null && lastPageInHistory.current !== page);
       window.history[isNewPage ? "pushState" : "replaceState"](null, "", url);
+      if (isNewPage) window.scrollTo(0, 0);
     }
+    pushNextUrl.current = false;
     lastPageInHistory.current = page;
   }, [url, page]);
 
@@ -220,6 +233,44 @@ function App() {
     () => [...new Set(terms.map((t) => t.lesson))],
     [],
   );
+
+  // Opens a learning-path link. Its route can name a lesson by number only
+  // ("Lesson 18"), so it goes through the URL to get the full lesson name.
+  function goTo(route) {
+    pushNextUrl.current = true;
+    applyRoute(readRoute(buildUrl(withRouteDefaults(route)).slice(1)));
+  }
+
+  function getLessonName(lessonNumber) {
+    return (
+      lessons.find((name) => name.startsWith(`Lesson ${lessonNumber}:`)) ??
+      `Lesson ${lessonNumber}`
+    );
+  }
+
+  // Learning path (learn -> practise -> apply) for a lesson's terms and a
+  // chapter's flashcards.
+  const lessonNumber =
+    page === PAGES.TERMS_LESSON
+      ? Number(/^Lesson (\d+)/.exec(selectedLesson)?.[1]) || null
+      : null;
+  let learningPath = null;
+  if (lessonNumber) {
+    learningPath = {
+      current: STEPS.LEARN,
+      steps: getPathSteps({
+        chapterId: getChapterIdForLesson(lessonNumber),
+        lessonNumber,
+      }),
+      next: getNextStepsForLesson(lessonNumber, getLessonName),
+    };
+  } else if (page === PAGES.FLASHCARDS_CHAPTER) {
+    learningPath = {
+      current: STEPS.PRACTISE,
+      steps: getPathSteps({ chapterId: selectedChapter }),
+      next: getNextStepsForChapter(selectedChapter),
+    };
+  }
 
   function resetSearch() {
     setSearch("");
@@ -299,6 +350,15 @@ function App() {
 
       <main className="main-content">
         <Breadcrumb items={breadcrumbItems} />
+        {learningPath && (
+          <div className="path-container">
+            <PathSteps
+              steps={learningPath.steps}
+              current={learningPath.current}
+              onNavigate={goTo}
+            />
+          </div>
+        )}
         {page === "home" && <HomePage navigate={navigate} />}
         {page === "terms" && selectedGrade !== 6 && (
           <GradeComingSoon
@@ -361,6 +421,12 @@ function App() {
           <TeachingTipDetailPage tipId={selectedTeachingTip} />
         )}
         {page === "about" && <AboutPage />}
+
+        {learningPath && (
+          <div className="path-container">
+            <NextSteps {...learningPath.next} onNavigate={goTo} />
+          </div>
+        )}
 
         {(page === PAGES.TERMS_LESSON ||
           page === PAGES.TIPS ||

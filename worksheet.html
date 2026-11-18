@@ -36,6 +36,9 @@
         outline-offset: 3px;
       }
       .page { width: min(1050px, calc(100% - 36px)); margin: 0 auto; padding: 28px 0 56px; }
+      /* Let the header inside stick to the top of the page, as it does in the app. */
+      #site-header { display: contents; }
+      .worksheet-path:not(:empty) { margin-top: 16px; }
       .breadcrumb ol { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin: 0; padding: 0; list-style: none; font-size: 14px; }
       .breadcrumb li { display: flex; align-items: center; gap: 8px; min-width: 0; max-width: 100%; }
       .breadcrumb li + li::before { content: "›"; color: var(--muted); }
@@ -92,7 +95,9 @@
           <li><span id="breadcrumb-current" aria-current="page">Worksheet</span></li>
         </ol>
       </nav>
+      <div id="learning-path" class="worksheet-path"></div>
       <div id="worksheet-content"></div>
+      <div id="next-steps"></div>
     </main>
     <script src="/worksheet-content.js"></script>
     <script src="/worksheet-content-chapter-2.js"></script>
@@ -562,5 +567,6 @@
       }
     </script>
     <script type="module" src="/src/site-header.jsx"></script>
+    <script type="module" src="/src/worksheet-path.jsx"></script>
   </body>
 </html>
