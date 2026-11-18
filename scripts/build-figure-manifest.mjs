@@ -4,7 +4,7 @@
 // A picture saved as public/worksheet-figures/<worksheet id>/<question number>.png
 // (or .jpg, .jpeg, .webp, .svg) belongs to that question, for example
 // public/worksheet-figures/lesson-19/4.8.png. This script writes
-// public/worksheet-figures/manifest.js, which worksheet.html and grade.html load.
+// public/worksheet-figures/manifest.js, which worksheet.html loads.
 //
 // It runs automatically before `npm run dev` and `npm run build`; run
 // `npm run figures` after adding pictures while the dev server is running.

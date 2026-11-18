@@ -1,5 +1,5 @@
 /* Site header, shared by the app (styles.css imports this file) and the
-   standalone worksheet.html and grade.html pages (via src/site-header.jsx). */
+   standalone worksheet.html page (via src/site-header.jsx). */
 
 .horizontal-header {
   position: sticky;

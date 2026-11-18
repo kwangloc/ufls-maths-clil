@@ -1,5 +1,5 @@
 // Page ids and URL building shared by the app and the site header, which also
-// runs on the standalone worksheet.html and grade.html pages. Keep this file
+// runs on the standalone worksheet.html page. Keep this file
 // free of data imports so those pages stay small.
 
 export const PAGES = {

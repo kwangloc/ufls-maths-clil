@@ -1,5 +1,5 @@
-// Renders the shared site header on standalone pages (worksheet.html,
-// grade.html). Each page adds <div id="site-header" data-active-page="...">.
+// Renders the shared site header on standalone pages (worksheet.html).
+// Each page adds <div id="site-header" data-active-page="...">.
 import React from "react";
 import { createRoot } from "react-dom/client";
 import SiteHeader from "./components/SiteHeader.jsx";

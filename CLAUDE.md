@@ -30,8 +30,8 @@ src/pages/                        one file per page
 src/components/                   SiteHeader, Breadcrumb, VolumeChapterPage, ...
 src/styles.css                    app styling; imports header.css
 src/header.css                    header styling, shared with the standalone pages
-src/site-header.jsx               mounts SiteHeader on worksheet.html and grade.html
-worksheet.html, grade.html        standalone pages (Vite inputs, see vite.config.js)
+src/site-header.jsx               mounts SiteHeader on worksheet.html
+worksheet.html                    standalone worksheet page (Vite input, see vite.config.js)
 public/                           logos, worksheet scripts, referenced by absolute path
 ```
 
@@ -43,10 +43,15 @@ values fall back to the nearest valid page. Chapter, lesson, tip and grade all l
 in `App`; `FlashcardsPage` gets its chapter as a prop and is keyed by it.
 
 **There are no "Back" buttons; breadcrumbs replace them.** `getBreadcrumbRoutes`
-in `App.jsx` builds the trail. `worksheet.html` and `grade.html` have their own
-static breadcrumb markup. The header is the same `SiteHeader` component everywhere:
-inside the app it switches pages in place, on the standalone pages its items are
+in `App.jsx` builds the trail. `worksheet.html` has its own static breadcrumb
+markup. The header is the same `SiteHeader` component everywhere:
+inside the app it switches pages in place, on the standalone page its items are
 ordinary links.
+
+**There is no way to submit work to a teacher.** Worksheet answers stay in the
+pupil's browser (`localStorage`). A file-based submit and a `/grade.html` marking
+page were removed until there is a backend; they are in the git history (commit
+`498cf1e` and earlier).
 
 ---
 
