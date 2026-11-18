@@ -72,3 +72,27 @@ export function getChaptersByVolume(volumeId) {
 export function getChapterById(chapterId) {
   return CHAPTERS.find((chapter) => chapter.id === chapterId) ?? CHAPTERS[0];
 }
+
+// First and last lesson number in each chapter.
+export const CHAPTER_LESSON_RANGES = {
+  "chapter-1": [1, 7],
+  "chapter-2": [8, 12],
+  "chapter-3": [13, 17],
+  "chapter-4": [18, 20],
+  "chapter-5": [21, 22],
+  "chapter-6": [23, 27],
+  "chapter-7": [28, 31],
+  "chapter-8": [32, 37],
+  "chapter-9": [38, 43],
+};
+
+export function getChapterIdForLesson(lessonNumber) {
+  return Object.entries(CHAPTER_LESSON_RANGES).find(
+    ([, [first, last]]) => lessonNumber >= first && lessonNumber <= last,
+  )?.[0];
+}
+
+// "Chapter IV:" -> "Chapter IV", for short labels such as breadcrumbs.
+export function getChapterShortLabel(chapterId) {
+  return getChapterById(chapterId).label.replace(/:$/, "");
+}

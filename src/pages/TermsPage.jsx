@@ -1,19 +1,10 @@
 import React, { useMemo } from "react";
 import { ArrowLeft, ArrowRight, Calculator } from "lucide-react";
 import VolumeChapterPage from "../components/VolumeChapterPage";
-import { getChapterById } from "../constants/chapterMeta";
-
-const CHAPTER_LESSON_RANGES = {
-  "chapter-1": [1, 7],
-  "chapter-2": [8, 12],
-  "chapter-3": [13, 17],
-  "chapter-4": [18, 20],
-  "chapter-5": [21, 22],
-  "chapter-6": [23, 27],
-  "chapter-7": [28, 31],
-  "chapter-8": [32, 37],
-  "chapter-9": [38, 43],
-};
+import {
+  CHAPTER_LESSON_RANGES,
+  getChapterById,
+} from "../constants/chapterMeta";
 
 export function TermsChapterPage({ chapterId, lessons, onBack, onOpenLesson }) {
   const chapter = getChapterById(chapterId);

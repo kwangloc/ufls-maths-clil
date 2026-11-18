@@ -33,7 +33,12 @@
         outline-offset: 3px;
       }
       .page { width: min(1050px, calc(100% - 36px)); margin: 0 auto; padding: 28px 0 56px; }
-      .back-link { color: var(--green); font-weight: 700; text-decoration: none; }
+      .breadcrumb ol { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin: 0; padding: 0; list-style: none; font-size: 14px; }
+      .breadcrumb li { display: flex; align-items: center; gap: 8px; min-width: 0; max-width: 100%; }
+      .breadcrumb li + li::before { content: "›"; color: var(--muted); }
+      .breadcrumb a { color: var(--green); font-weight: 700; text-decoration: none; }
+      .breadcrumb a:hover { text-decoration: underline; }
+      .breadcrumb [aria-current="page"] { overflow: hidden; color: var(--muted); white-space: nowrap; text-overflow: ellipsis; }
       .heading { margin: 28px 0 20px; }
       .eyebrow { color: #5d776b; font-size: 12px; font-weight: 800; letter-spacing: 1.5px; }
       h1 { margin: 8px 0; font-size: clamp(30px, 5vw, 46px); line-height: 1.12; letter-spacing: -1.6px; }
@@ -79,7 +84,14 @@
   </head>
   <body>
     <main class="page" id="worksheet">
-      <a class="back-link" id="worksheet-back-link" href="/?page=worksheets-chapter&amp;chapter=chapter-1">← Back to worksheets</a>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/?page=worksheets">Worksheets</a></li>
+          <li id="breadcrumb-chapter" hidden><a id="worksheet-back-link" href="/?page=worksheets">Chapter</a></li>
+          <li><span id="breadcrumb-current" aria-current="page">Worksheet</span></li>
+        </ol>
+      </nav>
       <div id="worksheet-content"></div>
     </main>
     <script src="/worksheet-content.js"></script>
@@ -125,12 +137,17 @@
                       ? 5
                       : 0;
       if (chapterNumber >= 1 && chapterNumber <= 5) {
-        document.getElementById("worksheet-back-link").href =
-          `/?page=worksheets-chapter&chapter=chapter-${chapterNumber}`;
+        const chapterLink = document.getElementById("worksheet-back-link");
+        chapterLink.href = `/?page=worksheets-chapter&chapter=chapter-${chapterNumber}`;
+        chapterLink.textContent = `Chapter ${["I", "II", "III", "IV", "V"][chapterNumber - 1]}`;
+        document.getElementById("breadcrumb-chapter").hidden = false;
       }
       const pdfParameter = new URLSearchParams(window.location.search).get("pdf");
       const worksheet = sets[id];
       const root = document.getElementById("worksheet-content");
+      const breadcrumbCurrent = document.getElementById("breadcrumb-current");
+      breadcrumbCurrent.textContent = worksheet ? worksheet.title : "Worksheet not found";
+      breadcrumbCurrent.title = breadcrumbCurrent.textContent;
 
       function getRequestedPdfUrl() {
         if (pdfParameter === null) return printablePdfs[id];

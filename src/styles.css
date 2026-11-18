@@ -83,6 +83,8 @@ select:focus-visible {
   align-items: center;
   flex-shrink: 0;
   cursor: pointer;
+  color: inherit;
+  text-decoration: none;
 }
 
 .brand-identity {
@@ -360,6 +362,63 @@ select:focus-visible {
   max-width: 1320px;
   margin: 0 auto;
   padding: 32px 34px 0;
+}
+
+.breadcrumb {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 20px 34px 0;
+  font-size: 14px;
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.breadcrumb a {
+  color: var(--green);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb a:focus-visible {
+  outline: 2px solid var(--green);
+  outline-offset: 2px;
+}
+
+.breadcrumb [aria-current="page"] {
+  overflow: hidden;
+  color: var(--muted);
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.breadcrumb-separator {
+  flex-shrink: 0;
+  color: var(--muted);
+}
+
+.breadcrumb + .page-section {
+  padding-top: 16px;
 }
 
 .hunt-homepage {
@@ -2867,7 +2926,8 @@ select:focus-visible {
     display: inline;
   }
   .home-page,
-  .page-section {
+  .page-section,
+  .breadcrumb {
     padding-left: 18px;
     padding-right: 18px;
   }

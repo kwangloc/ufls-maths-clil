@@ -60,6 +60,12 @@
       .score-line { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
       .detail-head { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between; }
       .check-result { margin-top: 10px; }
+      .breadcrumb ol { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; margin: 0; padding: 0; list-style: none; font-size: 14px; }
+      .breadcrumb li { display: flex; align-items: center; gap: 8px; }
+      .breadcrumb li + li::before { content: "›"; color: var(--muted); }
+      .breadcrumb a { font-weight: 700; text-decoration: none; }
+      .breadcrumb a:hover { text-decoration: underline; }
+      .breadcrumb [aria-current="page"] { color: var(--muted); }
       @media (max-width: 600px) {
         .page { width: min(100% - 24px, 1050px); padding-top: 20px; }
         .marking { grid-template-columns: 1fr; }
@@ -68,7 +74,13 @@
   </head>
   <body>
     <main class="page">
-      <a href="/?page=worksheets">← Back to worksheets</a>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/?page=worksheets">Worksheets</a></li>
+          <li><span aria-current="page">Mark submitted work</span></li>
+        </ol>
+      </nav>
       <header>
         <div class="eyebrow" style="margin-top: 24px">FOR TEACHERS</div>
         <h1>Mark submitted work</h1>
