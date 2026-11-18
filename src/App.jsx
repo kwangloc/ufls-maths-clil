@@ -428,9 +428,7 @@ function App() {
           </div>
         )}
 
-        {(page === PAGES.TERMS_LESSON ||
-          page === PAGES.TIPS ||
-          page === PAGES.ABOUT) && <FeedbackForm />}
+        {page === PAGES.HOME && <FeedbackForm />}
       </main>
     </div>
   );

@@ -12,7 +12,6 @@ import {
 import content from "../data/content.json";
 import volume2Terms from "../data/volume2Terms.json";
 import EmptyState from "../components/EmptyState";
-import FeedbackForm from "../components/FeedbackForm";
 import VolumeChapterPage from "../components/VolumeChapterPage";
 import FillTheGap from "../components/FillTheGap";
 import { getChapterById } from "../constants/chapterMeta";
@@ -658,8 +657,6 @@ export default function FlashcardsPage({ chapterId = null, onSelectChapter }) {
           ) : (
             multipleChoiceView
           )}
-
-          <FeedbackForm />
         </section>
       ) : (
         <section className="page-section flashcards-page-shell">
