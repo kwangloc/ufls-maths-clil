@@ -1,5 +1,8 @@
-import React, { useMemo, useState } from "react";
-import fillTheGapLessons from "../data/fillTheGapVolume1.json";
+import React, { useEffect, useMemo, useState } from "react";
+import fillTheGapVolume1 from "../data/fillTheGapVolume1.json";
+import fillTheGapVolume2 from "../data/fillTheGapVolume2.json";
+
+const fillTheGapLessons = [...fillTheGapVolume1, ...fillTheGapVolume2];
 
 function normalizeAnswer(answer) {
   return answer.trim().toLocaleLowerCase().replace(/\s+/g, " ");
@@ -10,6 +13,14 @@ export default function FillTheGap({ chapterId }) {
   const [filledAnswers, setFilledAnswers] = useState([]);
   const [selectedWord, setSelectedWord] = useState(null);
   const [isChecked, setIsChecked] = useState(false);
+
+  useEffect(() => {
+    setLessonIndex(0);
+    setFilledAnswers([]);
+    setSelectedWord(null);
+    setIsChecked(false);
+  }, [chapterId]);
+
   const lessons = useMemo(
     () => fillTheGapLessons.filter((item) => item.chapterId === chapterId),
     [chapterId],
@@ -17,7 +28,7 @@ export default function FillTheGap({ chapterId }) {
   const lesson = lessons[lessonIndex];
 
   const gapAnswers = useMemo(
-    () => lesson.exercises.flatMap((exercise) => exercise.answers),
+    () => (lesson ? lesson.exercises.flatMap((exercise) => exercise.answers) : []),
     [lesson],
   );
 
@@ -59,6 +70,16 @@ export default function FillTheGap({ chapterId }) {
   }
 
   let gapIndex = 0;
+
+  if (!lesson) {
+    return (
+      <section className="fill-gap-screen" aria-label="Fill the gap exercise">
+        <div className="empty-chapter-panel">
+          No fill the gap exercises available yet for this chapter.
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="fill-gap-screen" aria-label="Fill the gap exercise">

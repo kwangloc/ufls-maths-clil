@@ -104,6 +104,7 @@
     <script src="/worksheet-content-chapter-3.js"></script>
     <script src="/worksheet-content-chapter-4.js"></script>
     <script src="/worksheet-content-chapter-5.js"></script>
+    <script src="/worksheet-content-volume-2-full.js"></script>
     <script src="/worksheet-figures/manifest.js"></script>
     <script src="/worksheet-drawings.js"></script>
     <script src="/drawing-check.js"></script>
@@ -140,11 +141,19 @@
                     ? 4
                     : lessonNumber <= 22 && lessonNumber >= 21
                       ? 5
-                      : 0;
-      if (chapterNumber >= 1 && chapterNumber <= 5) {
+                      : lessonNumber <= 27 && lessonNumber >= 23
+                        ? 6
+                        : lessonNumber <= 31 && lessonNumber >= 28
+                          ? 7
+                          : lessonNumber <= 37 && lessonNumber >= 32
+                            ? 8
+                            : lessonNumber <= 43 && lessonNumber >= 38
+                              ? 9
+                              : 0;
+      if (chapterNumber >= 1 && chapterNumber <= 9) {
         const chapterLink = document.getElementById("worksheet-back-link");
         chapterLink.href = `/?page=worksheets-chapter&chapter=chapter-${chapterNumber}`;
-        chapterLink.textContent = `Chapter ${["I", "II", "III", "IV", "V"][chapterNumber - 1]}`;
+        chapterLink.textContent = `Chapter ${["I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"][chapterNumber - 1]}`;
         document.getElementById("breadcrumb-chapter").hidden = false;
       }
       const pdfParameter = new URLSearchParams(window.location.search).get("pdf");
@@ -354,8 +363,10 @@
           const answer = document.createElement("p");
           if (hasAnswer(question)) {
             feedback.className = "answer-feedback";
-            heading.textContent = "Suggested answer";
-            answer.textContent = question.answer;
+            heading.textContent = question.answer ? "Suggested answer" : "Self-check";
+            answer.textContent =
+              question.answer ||
+              "No suggested answer is provided for this exercise. Compare your work with the original worksheet or your teacher's answer key.";
           } else {
             feedback.className = "answer-feedback unanswered-feedback";
             heading.textContent = "Try this question first";

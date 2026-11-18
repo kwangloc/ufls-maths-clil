@@ -50,7 +50,7 @@ do the worksheet.** `learningPath.js` decides where each step and "What's next"
 link goes; `components/LearningPath.jsx` draws them. They appear on a lesson's
 terms page, a chapter's flashcards page (App) and on worksheet.html (via
 `src/worksheet-path.jsx`). Flashcards are per chapter, so step 2 is always the
-whole chapter. Lessons without a worksheet (23-43) show step 3 as "Coming soon".
+whole chapter. A lesson without a worksheet PDF shows step 3 as "Coming soon".
 A worksheet leads on to the next lesson's terms, or to the chapter review after a
 chapter's last lesson.
 

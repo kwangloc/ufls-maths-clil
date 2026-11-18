@@ -13,6 +13,9 @@
 //                                               given polygons
 //   { type: "marks", values: [numbers] }        mark points on the number line
 // `check` may also be an array; every entry must pass.
+// Any entry may set `region: [x0, y0, x1, y1]` (cm) so that it only looks at the
+// given items and the student's lines inside that rectangle — used when one pad
+// holds several separate figures.
 //
 // Works in the browser (window.MathsDrawingCheck) and in Node (module.exports).
 (function (root, factory) {
@@ -449,6 +452,25 @@
 
   // ---------- entry point ----------
 
+  // Limits a check to one rectangle of the pad: given items whose points all lie
+  // inside it, and student lines/points whose middle lies inside it.
+  function scope(region, rawGiven, given, student) {
+    if (!Array.isArray(region) || region.length !== 4) return { given, student };
+    const [x0, y0, x1, y1] = region;
+    const inside = (p) => p[0] >= x0 && p[0] <= x1 && p[1] >= y0 && p[1] <= y1;
+    const middle = (a, b) => [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+    const itemPoints = (item) =>
+      item.type === "polygon" ? item.points : item.type === "point" ? [item.p] : item.c ? [item.c] : [item.a, item.b];
+    return {
+      given: readGiven((Array.isArray(rawGiven) ? rawGiven : []).filter((item) => itemPoints(item).every(inside))),
+      student: {
+        ...student,
+        segments: student.segments.filter((s) => inside(middle(s.a, s.b))),
+        points: student.points.filter((pt) => inside(pt.p)),
+      },
+    };
+  }
+
   function hasCheck(drawingSpec) {
     return Boolean(drawingSpec && drawingSpec.check);
   }
@@ -468,11 +490,12 @@
     const highlight = new Set();
     let ok = true;
     for (const spec of specs) {
+      const { given: scopedGiven, student: scopedStudent } = scope(spec.region, drawingSpec.given, given, student);
       let result;
-      if (spec.type === "polygon") result = checkPolygon(spec, student);
-      else if (spec.type === "symmetry") result = checkSymmetry(spec, given, student);
-      else if (spec.type === "axes") result = checkAxes(given, student);
-      else if (spec.type === "marks") result = checkMarks(spec, drawingSpec, student);
+      if (spec.type === "polygon") result = checkPolygon(spec, scopedStudent);
+      else if (spec.type === "symmetry") result = checkSymmetry(spec, scopedGiven, scopedStudent);
+      else if (spec.type === "axes") result = checkAxes(scopedGiven, scopedStudent);
+      else if (spec.type === "marks") result = checkMarks(spec, drawingSpec, scopedStudent);
       else throw new Error(`Unknown drawing check type "${spec.type}".`);
       const prefix = spec.label ? `${spec.label} ` : "";
       ok = ok && result.ok;

@@ -202,11 +202,16 @@
     for (const item of Array.isArray(given) ? given : []) {
       if (!item || typeof item !== "object") continue;
       if ((item.type === "segment" || item.type === "axis") && isPoint(item.a) && isPoint(item.b)) {
-        items.push({ type: item.type, a: toUnits(item.a), b: toUnits(item.b), label: item.label || "" });
+        items.push({ type: item.type, a: toUnits(item.a), b: toUnits(item.b), label: item.label || "", bounded: item.bounded === true });
       } else if (item.type === "polygon" && Array.isArray(item.points) && item.points.length >= 3 && item.points.every(isPoint)) {
         items.push({ type: "polygon", points: item.points.map(toUnits) });
       } else if (item.type === "point" && isPoint(item.p)) {
         items.push({ type: "point", p: toUnits(item.p), label: item.label || "" });
+      } else if (item.type === "circle" && isPoint(item.c) && isNumber(item.r) && item.r > 0) {
+        items.push({ type: "given-arc", c: toUnits(item.c), r: item.r * CM, start: 0, end: 360 });
+      } else if (item.type === "arc" && isPoint(item.c) && isNumber(item.r) && item.r > 0 && isNumber(item.start) && isNumber(item.end)) {
+        // Angles in degrees, measured clockwise on screen from the positive x direction.
+        items.push({ type: "given-arc", c: toUnits(item.c), r: item.r * CM, start: item.start, end: item.end });
       }
     }
     return items;
@@ -230,6 +235,7 @@
     for (const item of given) {
       if (item.type === "segment") segments.push([item.a, item.b]);
       else if (item.type === "polygon") item.points.forEach((p, i) => segments.push([p, item.points[(i + 1) % item.points.length]]));
+      else if (item.type === "axis" && item.bounded) segments.push([item.a, item.b]);
       else if (item.type === "axis") {
         const length = dist(item.a, item.b) || 1;
         const ux = (item.b[0] - item.a[0]) / length;
@@ -344,6 +350,12 @@
         ctx.moveTo(points[0][0], points[0][1]);
         points.slice(1).forEach((p) => ctx.lineTo(p[0], p[1]));
         if (item.type === "polygon") ctx.closePath();
+        ctx.stroke();
+      } else if (item.type === "given-arc") {
+        ctx.strokeStyle = GIVEN_COLOR;
+        ctx.lineWidth = stroke(3.5);
+        ctx.beginPath();
+        ctx.arc(item.c[0], item.c[1], item.r, (item.start * Math.PI) / 180, (item.end * Math.PI) / 180);
         ctx.stroke();
       } else if (item.type === "point") {
         ctx.fillStyle = "#25342d";
@@ -461,6 +473,7 @@
       case "axis":
         return [Math.min(item.a[0], item.b[0]), Math.min(item.a[1], item.b[1]), Math.max(item.a[0], item.b[0]), Math.max(item.a[1], item.b[1])];
       case "circle":
+      case "given-arc":
         return [item.c[0] - item.r, item.c[1] - item.r, item.c[0] + item.r, item.c[1] + item.r];
       case "point":
         return [item.p[0] - 8, item.p[1] - 26, item.p[0] + 40, item.p[1] + 26];

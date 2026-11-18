@@ -1,0 +1,919 @@
+[
+  {
+    "lessonNumber": 23,
+    "chapterId": "chapter-6",
+    "title": "Lesson 23: Extending the concept of fractions. Equal fractions",
+    "wordBank": [
+      "Fraction",
+      "Numerator",
+      "Denominator",
+      "Equivalent fractions",
+      "Fundamental property of fractions",
+      "Simplifying fractions",
+      "Irreducible fraction"
+    ],
+    "exercises": [
+      {
+        "text": "A __________ is written in the form ab where a and b are integers and b0.",
+        "answers": [
+          "fraction"
+        ]
+      },
+      {
+        "text": "In the expression ab, the top part a is called the __________, while the bottom part b represents the total equal parts divided.",
+        "answers": [
+          "numerator"
+        ]
+      },
+      {
+        "text": "The bottom number b in any fraction ab is known as the __________ and must never equal zero.",
+        "answers": [
+          "denominator"
+        ]
+      },
+      {
+        "text": "When two different-looking fractions represent the exact same value, such as 12 and 24, they are called __________.",
+        "answers": [
+          "equivalent fractions"
+        ]
+      },
+      {
+        "text": "According to the __________, multiplying or dividing both the top and bottom numbers of a fraction by the same non-zero integer gives an equal value.",
+        "answers": [
+          "fundamental property of fractions"
+        ]
+      },
+      {
+        "text": "The process of __________ involves dividing both parts of a fraction by a common divisor to make the numbers smaller.",
+        "answers": [
+          "simplifying fractions"
+        ]
+      },
+      {
+        "text": "When a fraction cannot be reduced any further because its numerator and denominator have no common divisors other than 1 and -1, it is called an __________.",
+        "answers": [
+          "irreducible fraction"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 24,
+    "chapterId": "chapter-6",
+    "title": "Lesson 24: Comparing fractions. Positive mixed numbers",
+    "wordBank": [
+      "Positive mixed number",
+      "Common multiple",
+      "Least common multiple",
+      "Finding a common denominator",
+      "Common denominator",
+      "Least common denominator",
+      "Comparing fractions",
+      "Mixed number",
+      "Whole number part",
+      "Fractional part"
+    ],
+    "exercises": [
+      {
+        "text": "Before adding fractions with different bottom numbers, we must start by __________ so that they share the same bottom value.",
+        "answers": [
+          "finding a common denominator"
+        ]
+      },
+      {
+        "text": "Any number like 12 or 24 that is divisible by both 3 and 4 is called a __________ of those two numbers.",
+        "answers": [
+          "common multiple"
+        ]
+      },
+      {
+        "text": "The __________ of 4 and 6 is 12, because 12 is the smallest positive number that both 4 and 6 divide into evenly.",
+        "answers": [
+          "least common multiple"
+        ]
+      },
+      {
+        "text": "To rewrite 12 and 13 as 36 and 26, we use 6 as the __________.",
+        "answers": [
+          "common denominator"
+        ]
+      },
+      {
+        "text": "Choosing the __________ makes calculations much simpler because it keeps the numbers as small as possible.",
+        "answers": [
+          "least common denominator"
+        ]
+      },
+      {
+        "text": "__________ with the same positive denominator is straightforward: the one with the larger numerator is greater.",
+        "answers": [
+          "Comparing fractions"
+        ]
+      },
+      {
+        "text": "A __________ combines a whole number and a proper fraction into a single value, such as 325.",
+        "answers": [
+          "mixed number"
+        ]
+      },
+      {
+        "text": "When we rewrite the improper fraction 73 as 213, we create a __________.",
+        "answers": [
+          "positive mixed number"
+        ]
+      },
+      {
+        "text": "In the expression 213, the number 2 represents the __________.",
+        "answers": [
+          "whole number part"
+        ]
+      },
+      {
+        "text": "In the same expression 213, the 13 that is smaller than 1 is known as the __________.",
+        "answers": [
+          "fractional part"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 25,
+    "chapterId": "chapter-6",
+    "title": "Lesson 25: Addition and subtraction of fractions",
+    "wordBank": [
+      "Adding fractions with the same denominator",
+      "Adding fractions with different denominators",
+      "Additive inverse of a fraction",
+      "Subtraction of fractions",
+      "Commutative property",
+      "Associative property"
+    ],
+    "exercises": [
+      {
+        "text": "__________ is very straightforward: you simply add the numerators together and keep the bottom number unchanged.",
+        "answers": [
+          "Adding fractions with the same denominator"
+        ]
+      },
+      {
+        "text": "When __________ like 13 and 14, you must first rewrite them with a common positive denominator before combining their numerators.",
+        "answers": [
+          "adding fractions with different denominators"
+        ]
+      },
+      {
+        "text": "The __________ of 35 is -35, because adding these two values together gives a sum of 0.",
+        "answers": [
+          "additive inverse of a fraction"
+        ]
+      },
+      {
+        "text": "__________ works just like addition: if they share the same bottom number, you subtract the second numerator from the first and keep the denominator.",
+        "answers": [
+          "Subtraction of fractions"
+        ]
+      },
+      {
+        "text": "Thanks to the __________, swapping the order of two fractions in an addition problem, such as 12+23=23+12, does not change the final result.",
+        "answers": [
+          "commutative property"
+        ]
+      },
+      {
+        "text": "Using the __________ allows us to group fractions differently when adding three or more numbers, making it easier to pair fractions with matching denominators first.",
+        "answers": [
+          "associative property"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 26,
+    "chapterId": "chapter-6",
+    "title": "Lesson 26: Multiplication and division of fractions",
+    "wordBank": [
+      "Multiplication of fractions",
+      "Reciprocal",
+      "Division of fractions"
+    ],
+    "exercises": [
+      {
+        "text": "__________ does not require a common denominator; you simply multiply the numerators together and multiply the denominators together.",
+        "answers": [
+          "Multiplication of fractions"
+        ]
+      },
+      {
+        "text": "Flipping 34 upside down gives 43, which is called the __________ of the original fraction.",
+        "answers": [
+          "reciprocal"
+        ]
+      },
+      {
+        "text": "When performing __________, you keep the first fraction the same and multiply it by the flipped version of the second fraction.",
+        "answers": [
+          "division of fractions"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 27,
+    "chapterId": "chapter-6",
+    "title": "Lesson 27: Two problems on fractions",
+    "wordBank": [
+      "Fraction of a number",
+      "Finding a number from its fraction"
+    ],
+    "exercises": [
+      {
+        "text": "To calculate a __________, such as finding 54 of 120, we multiply the given value 120 by 54 to get 150.",
+        "answers": [
+          "fraction of a number"
+        ]
+      },
+      {
+        "text": "__________ requires dividing the known part by the given fraction; for example, if 34 of an unknown amount is 180, we divide 180 by 34 to get 240.",
+        "answers": [
+          "Finding a number from its fraction"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 28,
+    "chapterId": "chapter-7",
+    "title": "Lesson 28: Decimals",
+    "wordBank": [
+      "Decimal / Decimal number",
+      "Decimal point",
+      "Whole number part",
+      "Decimal part",
+      "additive inverse of a decimal",
+      "Negative decimal",
+      "Decimal fraction",
+      "Positive decimal",
+      "Comparing decimal numbers"
+    ],
+    "exercises": [
+      {
+        "text": "A fraction whose denominator is a power of 10, such as 1710 or -34100, is called a __________.",
+        "answers": [
+          "decimal fraction"
+        ]
+      },
+      {
+        "text": "Any value like -1.7 or -0.025 that is less than zero is known as a __________.",
+        "answers": [
+          "negative decimal"
+        ]
+      },
+      {
+        "text": "Numbers greater than zero, such as 5.1 or 12.3, are examples of a __________.",
+        "answers": [
+          "positive decimal"
+        ]
+      },
+      {
+        "text": "Both negative and positive values written with a comma belong to the category of a __________.",
+        "answers": [
+          "decimal / decimal number"
+        ]
+      },
+      {
+        "text": "In the number 215.417, the __________ is the dot that separates the digits on the left from the digits on the right.",
+        "answers": [
+          "decimal point"
+        ]
+      },
+      {
+        "text": "Looking at 215.417, the digits 215 to the left of the separator form the __________.",
+        "answers": [
+          "whole number part"
+        ]
+      },
+      {
+        "text": "In the same number 215.417, the digits 417 to the right of the separator make up the __________.",
+        "answers": [
+          "decimal part"
+        ]
+      },
+      {
+        "text": "The __________ of 3.15 is -3.15, because they are opposites on the number line.",
+        "answers": [
+          "additive inverse of a decimal"
+        ]
+      },
+      {
+        "text": "When __________ that are both negative, the one with the larger opposite is actually the smaller value.",
+        "answers": [
+          "comparing decimal numbers"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 29,
+    "chapterId": "chapter-7",
+    "title": "Lesson 29: Calculations with decimals",
+    "wordBank": [
+      "Addition of decimals",
+      "Subtraction of decimals",
+      "Multiplication of decimals",
+      "Division of decimals"
+    ],
+    "exercises": [
+      {
+        "text": "When performing __________, such as calculating (-1.5)+(-2.3)=-(1.5+2.3), we use sign rules to combine the numbers just like with integers.",
+        "answers": [
+          "addition of decimals"
+        ]
+      },
+      {
+        "text": "__________ can always be rewritten as adding the opposite, following the rule a-b=a+(-b).",
+        "answers": [
+          "Subtraction of decimals"
+        ]
+      },
+      {
+        "text": "In __________, multiplying two values with the same sign, like (-2.5)(-4), always gives a positive result.",
+        "answers": [
+          "multiplication of decimals"
+        ]
+      },
+      {
+        "text": "When doing __________ with different signs, such as (-4.8)0.2, the final quotient will always carry a minus sign.",
+        "answers": [
+          "division of decimals"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 30,
+    "chapterId": "chapter-7",
+    "title": "Lesson 30: Rounding and estimation",
+    "wordBank": [
+      "Rounding numbers",
+      "Rounding rule",
+      "Estimation"
+    ],
+    "exercises": [
+      {
+        "text": "__________ helps make long decimals simpler by dropping extra decimal digits or replacing integer digits with zeros to reach a specific place value.",
+        "answers": [
+          "Rounding numbers"
+        ]
+      },
+      {
+        "text": "According to the __________, if the digit immediately to the right of your target place is 5 or greater, you increase the target digit by 1; otherwise, you keep it the same.",
+        "answers": [
+          "rounding rule"
+        ]
+      },
+      {
+        "text": "When shopping at a supermarket and quickly checking if you have enough cash without calculating the exact cents, you are using __________ to find an approximate total.",
+        "answers": [
+          "estimation"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 31,
+    "chapterId": "chapter-7",
+    "title": "Lesson 31: Some problems on ratios and percentages",
+    "wordBank": [
+      "Ratio",
+      "Percentage",
+      "Percent sign (%)",
+      "Percentage of a number",
+      "Map scale"
+    ],
+    "exercises": [
+      {
+        "text": "Comparing 1 minute to 1 hour (60 minutes) gives a __________ of 1:60, which shows the quotient of two quantities measured in the same unit.",
+        "answers": [
+          "ratio"
+        ]
+      },
+      {
+        "text": "In everyday life, such as bank interest rates or store discounts, ratios are often written out of 100 as a __________.",
+        "answers": [
+          "percentage"
+        ]
+      },
+      {
+        "text": "When we divide 1 by 4 and multiply by 100, we write the result as 25% using the __________.",
+        "answers": [
+          "percent sign (%)"
+        ]
+      },
+      {
+        "text": "Finding a __________, like calculating 25% of 24, is done by multiplying 24 by 25100 to get 6.",
+        "answers": [
+          "percentage of a number"
+        ]
+      },
+      {
+        "text": "A __________ of 1:10,000 tells us that 1cm measured on paper represents 10,000cm in the real world.",
+        "answers": [
+          "map scale"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 32,
+    "chapterId": "chapter-8",
+    "title": "Lesson 32: Points and lines",
+    "wordBank": [
+      "Point",
+      "Line / Straight line",
+      "Point lying on a line",
+      "Point not lying on a line",
+      "Collinear points",
+      "Non-collinear points",
+      "Intersecting lines",
+      "Point of intersection",
+      "Parallel lines",
+      "Coincident lines"
+    ],
+    "exercises": [
+      {
+        "text": "A __________ is a basic geometric object that has position but no size, usually denoted by a capital letter like M or N.",
+        "answers": [
+          "point"
+        ]
+      },
+      {
+        "text": "A __________ extends infinitely in both directions without any bends, such as the line d shown in the figure.",
+        "answers": [
+          "line / straight line"
+        ]
+      },
+      {
+        "text": "In the first diagram, point M is a __________, meaning it lies directly on line d (written as Md).",
+        "answers": [
+          "point lying on a line"
+        ]
+      },
+      {
+        "text": "Point N is a __________, meaning it sits outside of line d (written as Nd).",
+        "answers": [
+          "point not lying on a line"
+        ]
+      },
+      {
+        "text": "When points A, C, and B all lie together on the same straight line, they are referred to as __________.",
+        "answers": [
+          "collinear points"
+        ]
+      },
+      {
+        "text": "If point C does not lie on the line passing through A and B, then A, B, and C are called __________.",
+        "answers": [
+          "non-collinear points"
+        ]
+      },
+      {
+        "text": "When two distinct lines cross each other, they are known as __________.",
+        "answers": [
+          "intersecting lines"
+        ]
+      },
+      {
+        "text": "The single shared location where two crossing lines meet is called their __________.",
+        "answers": [
+          "point of intersection"
+        ]
+      },
+      {
+        "text": "Two distinct straight lines that never meet and have no shared points are called __________.",
+        "answers": [
+          "parallel lines"
+        ]
+      },
+      {
+        "text": "If two lines share two or more distinct points, they are considered to be __________ because they lie right on top of each other.",
+        "answers": [
+          "coincident lines"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 33,
+    "chapterId": "chapter-8",
+    "title": "Lesson 33: Points between two points. Rays",
+    "wordBank": [
+      "Point between two points",
+      "Two points on the same side of a point",
+      "Two points on opposite sides of a point",
+      "Ray / half-line",
+      "Endpoint of a ray",
+      "Coincident rays",
+      "Opposite rays"
+    ],
+    "exercises": [
+      {
+        "text": "In the first diagram, point B is a __________, because it lies in between points A and C on the same straight line.",
+        "answers": [
+          "point between two points"
+        ]
+      },
+      {
+        "text": "Looking at figure 8.11, points A and B are considered to be _________ relative to point C.",
+        "answers": [
+          "two points on the same side of a point"
+        ]
+      },
+      {
+        "text": "Points A and C are referred to as __________ with respect to point B because they sit on opposite sides of B.",
+        "answers": [
+          "two points on opposite sides of a point"
+        ]
+      },
+      {
+        "text": "A __________ consists of a starting point and extends infinitely in one direction along a line.",
+        "answers": [
+          "ray / half-line"
+        ]
+      },
+      {
+        "text": "In ray Am, the starting point A is known as the __________ from which the ray begins.",
+        "answers": [
+          "endpoint of a ray"
+        ]
+      },
+      {
+        "text": "When two rays share the exact same starting point and extend in the exact same direction, such as ray Am and ray AB, they are called __________.",
+        "answers": [
+          "coincident rays"
+        ]
+      },
+      {
+        "text": "Two rays that share a common origin and extend in opposite directions along the same straight line, like Ox and Oy, are known as __________.",
+        "answers": [
+          "opposite rays"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 34,
+    "chapterId": "chapter-8",
+    "title": "Lesson 34: Line segments. Length of line segments",
+    "wordBank": [
+      "Line segment",
+      "Comparing line segments",
+      "Endpoints of a line segment",
+      "Distance between two points",
+      "Length of a line segment"
+    ],
+    "exercises": [
+      {
+        "text": "A __________ is a geometric figure consisting of two points A and B together with all the points lying between them.",
+        "answers": [
+          "line segment"
+        ]
+      },
+      {
+        "text": "In figure 8.15, the two boundary points A and B that mark the start and end of segment AB are called the __________.",
+        "answers": [
+          "endpoints of a line segment"
+        ]
+      },
+      {
+        "text": "Every segment has a specific measurement represented by a positive number, which is known as the __________.",
+        "answers": [
+          "length of a line segment"
+        ]
+      },
+      {
+        "text": "The length of segment AB is also referred to as the __________, which equals 0 when the two points coincide.",
+        "answers": [
+          "distance between two points"
+        ]
+      },
+      {
+        "text": "__________ allows us to determine whether one segment is shorter than, longer than, or equal to another, such as writing AB&lt;CD or AB=EG.",
+        "answers": [
+          "Comparing line segments"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 35,
+    "chapterId": "chapter-8",
+    "title": "Lesson 35: Midpoints of line segments",
+    "wordBank": [
+      "Midpoint of a line segment",
+      "Point between two points",
+      "Equidistant"
+    ],
+    "exercises": [
+      {
+        "text": "Before checking if a location divides a segment into equal halves, we must first verify that it is a __________ on the straight line.",
+        "answers": [
+          "point between two points"
+        ]
+      },
+      {
+        "text": "When a point sits precisely in the middle, its distance to endpoint A is equal to its distance to endpoint B, making both endpoints __________ from that point.",
+        "answers": [
+          "equidistant"
+        ]
+      },
+      {
+        "text": "The specific term for a point that lies between two endpoints and satisfies IA=IB is the __________.",
+        "answers": [
+          "midpoint of a line segment"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 36,
+    "chapterId": "chapter-8",
+    "title": "Lesson 36: Angles",
+    "wordBank": [
+      "Sides of an angle",
+      "Point in the interior of an angle",
+      "Vertex of an angle",
+      "Angle"
+    ],
+    "exercises": [
+      {
+        "text": "Two rays Ox and Oy sharing the same starting point form a geometric figure called an __________.",
+        "answers": [
+          "angle"
+        ]
+      },
+      {
+        "text": "In figure 8.23, the common endpoint O where the two rays meet is known as the __________.",
+        "answers": [
+          "vertex of an angle"
+        ]
+      },
+      {
+        "text": "Looking at angle xOy, the two rays Ox and Oy are called the __________.",
+        "answers": [
+          "sides of an angle"
+        ]
+      },
+      {
+        "text": "In figure 8.25, point M sits strictly between the two rays (not on the rays or outside like point N), so M is a __________.",
+        "answers": [
+          "point in the interior of an angle"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 37,
+    "chapterId": "chapter-8",
+    "title": "Lesson 37: Angle measures",
+    "wordBank": [
+      "Degree",
+      "Obtuse angle",
+      "Right angle",
+      "Acute angle",
+      "Straight angle",
+      "Protractor",
+      "Angle measure"
+    ],
+    "exercises": [
+      {
+        "text": "Every angle has a specific numeric __________ that tells how \"wide\" it opens, measured with units like degrees.",
+        "answers": [
+          "angle measure"
+        ]
+      },
+      {
+        "text": "A straight angle has a measurement of 180°, where the tiny raised circle symbol represents a single __________.",
+        "answers": [
+          "degree"
+        ]
+      },
+      {
+        "text": "To measure or draw angle xOy precisely in geometry, we use a semi-circular tool called a __________.",
+        "answers": [
+          "protractor"
+        ]
+      },
+      {
+        "text": "An angle that measures exactly 90° is known as a __________.",
+        "answers": [
+          "right angle"
+        ]
+      },
+      {
+        "text": "An angle whose measure is greater than 0° but less than 90° is called an __________.",
+        "answers": [
+          "acute angle"
+        ]
+      },
+      {
+        "text": "A __________ is larger than a right angle but smaller than a straight angle, measuring between 90° and 180°.",
+        "answers": [
+          "obtuse angle"
+        ]
+      },
+      {
+        "text": "When two opposite rays form a line, the resulting shape is a __________ with a measure of exactly 180°.",
+        "answers": [
+          "straight angle"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 38,
+    "chapterId": "chapter-9",
+    "title": "Lesson 38: Data and data collection",
+    "wordBank": [
+      "Numerical data",
+      "Data",
+      "Validity of data",
+      "Data collection",
+      "Non-numerical data"
+    ],
+    "exercises": [
+      {
+        "text": "Information collected through observation, experiments, or surveys is broadly referred to as __________.",
+        "answers": [
+          "data"
+        ]
+      },
+      {
+        "text": "When information is expressed in numbers, such as weights, heights, or scores, it is classified as __________.",
+        "answers": [
+          "numerical data"
+        ]
+      },
+      {
+        "text": "Information consisting of words, categories, or descriptions (like favorite colors or blood types) is known as __________.",
+        "answers": [
+          "non-numerical data"
+        ]
+      },
+      {
+        "text": "Methods such as conducting questionnaires, making observations, or gathering information from existing sources are part of __________.",
+        "answers": [
+          "data collection"
+        ]
+      },
+      {
+        "text": "Checking whether collected figures make sense and identifying any unreasonable entries helps ensure the __________.",
+        "answers": [
+          "validity of data"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 39,
+    "chapterId": "chapter-9",
+    "title": "Lesson 39: Statistical tables and pictographs",
+    "wordBank": [
+      "Symbol / Key",
+      "Statistical table",
+      "Pictogram"
+    ],
+    "exercises": [
+      {
+        "text": "Organizing collected data into neat rows and columns creates a __________, making it easy to read and analyze the numbers.",
+        "answers": [
+          "statistical table"
+        ]
+      },
+      {
+        "text": "Instead of writing only numbers, a __________ uses small pictures or icons to represent and display statistical data visually.",
+        "answers": [
+          "pictogram"
+        ]
+      },
+      {
+        "text": "When reading a picture chart, we always look at the __________ to see how many items each single icon represents (for example, one apple icon = 10 apples).",
+        "answers": [
+          "symbol / key"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 40,
+    "chapterId": "chapter-9",
+    "title": "Lesson 40: Bar charts",
+    "wordBank": [
+      "Vertical axis",
+      "Horizontal axis",
+      "Bar chart"
+    ],
+    "exercises": [
+      {
+        "text": "A __________ uses rectangular bars of equal width to represent and compare different categories of data visually.",
+        "answers": [
+          "bar chart"
+        ]
+      },
+      {
+        "text": "When setting up a standard column chart, the quantitative values are typically measured along the __________ running up and down.",
+        "answers": [
+          "vertical axis"
+        ]
+      },
+      {
+        "text": "The categories or groups being compared (such as months, classes, or names) are laid out along the __________ running left to right.",
+        "answers": [
+          "horizontal axis"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 41,
+    "chapterId": "chapter-9",
+    "title": "Lesson 41: Double bar charts",
+    "wordBank": [
+      "Double bar chart",
+      "Legend / Key"
+    ],
+    "exercises": [
+      {
+        "text": "To compare two sets of data side-by-side for the same categories (such as comparing boys' and girls' sports preferences over two years), we use a __________.",
+        "answers": [
+          "double bar chart"
+        ]
+      },
+      {
+        "text": "When looking at a multi-series chart, we check the __________ to understand what each colored or patterned column represents.",
+        "answers": [
+          "legend / key"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 42,
+    "chapterId": "chapter-9",
+    "title": "Lesson 42: Possible outcomes and events in games and experiments",
+    "wordBank": [
+      "Possible outcome",
+      "Event",
+      "Experiment"
+    ],
+    "exercises": [
+      {
+        "text": "When we roll a die or toss a coin to observe its random behavior, the action itself is called an __________.",
+        "answers": [
+          "experiment"
+        ]
+      },
+      {
+        "text": "Each individual result that can possibly happen when performing a trial is known as a __________.",
+        "answers": [
+          "possible outcome"
+        ]
+      },
+      {
+        "text": "A specific condition or outcome that we check to see whether it occurs during a game or test is referred to as an __________.",
+        "answers": [
+          "event"
+        ]
+      }
+    ]
+  },
+  {
+    "lessonNumber": 43,
+    "chapterId": "chapter-9",
+    "title": "Lesson 43: Experimental probability",
+    "wordBank": [
+      "Experimental probability",
+      "Number of trials",
+      "Frequency"
+    ],
+    "exercises": [
+      {
+        "text": "When we repeat an experiment multiple times, the total count of how many times the test is performed is called the __________.",
+        "answers": [
+          "number of trials"
+        ]
+      },
+      {
+        "text": "The number of times a specific event or outcome actually occurs during those tests is known as its __________.",
+        "answers": [
+          "frequency"
+        ]
+      },
+      {
+        "text": "By dividing the number of successful outcomes by the total number of attempts, we can calculate the __________, which shows how likely an event is based on practical tests.",
+        "answers": [
+          "experimental probability"
+        ]
+      }
+    ]
+  }
+]

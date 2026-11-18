@@ -1,6 +1,7 @@
-// Reads the worksheet titles from public/worksheet-content*.js and writes
-// src/data/worksheetTitles.json ({ "lesson-18": "Lesson 18: ...", ... }), so the
-// app can show the same titles as worksheet.html without loading every question.
+// Reads the worksheet titles from public/worksheet-content*.js (the Volume 1
+// chapter files and the Volume 2 file) and writes src/data/worksheetTitles.json
+// ({ "lesson-18": "Lesson 18: ...", ... }), so the app can show the same titles
+// as worksheet.html without loading every question.
 //
 // It runs automatically before `npm run dev` and `npm run build`; run
 // `npm run worksheet-titles` after editing a title while the dev server is running.
@@ -13,9 +14,10 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const publicDir = join(root, "public");
 const output = join(root, "src", "data", "worksheetTitles.json");
 
-// worksheet-content.js creates window.WORKSHEET_SETS; the chapter files add to it.
+// worksheet-content.js creates window.WORKSHEET_SETS; the other files
+// (worksheet-content-chapter-N.js, worksheet-content-volume-2-full.js) add to it.
 const files = readdirSync(publicDir)
-  .filter((name) => /^worksheet-content(-chapter-\d+)?\.js$/.test(name))
+  .filter((name) => /^worksheet-content(-[\w-]+)?\.js$/.test(name))
   .sort((a, b) => (a === "worksheet-content.js" ? -1 : b === "worksheet-content.js" ? 1 : a.localeCompare(b, "en", { numeric: true })));
 
 const sandbox = { window: {} };
